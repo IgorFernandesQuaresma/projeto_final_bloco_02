@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { CategoriaModule } from './categoria/categoria.module';
+import { Categoria } from './categoria/entities/categoria.entity';
 
 
 @Module({
@@ -15,9 +17,11 @@ import { ConfigModule } from '@nestjs/config';
       username: 'root',
       password: process.env.PASSWORD,
       database: 'db_farmacia',
-      entities: [],
+      entities: [Categoria],
       synchronize: true,
     }),
+
+    CategoriaModule
   ],
   controllers: [AppController],
   providers: [AppService],
